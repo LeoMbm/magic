@@ -11,7 +11,6 @@ export async function GET(req: NextApiRequest) {
       }
     );
     const card = await res.json();
-    console.log(card);
     return new Response(JSON.stringify(card.cards), {
       status: 200,
     });

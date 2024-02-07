@@ -25,6 +25,10 @@ const SearchCard: React.FC<SearchCardProps> = ({ setDeck }) => {
     try {
       setSearchResults([]);
       setLoading(true);
+      if (searchTerm === "") {
+        setSearchResults([]);
+        return;
+      }
       const res = await fetch(`/api/cards?name=${searchTerm}`);
       const data = await res.json();
       setSearchResults(data);
@@ -47,9 +51,17 @@ const SearchCard: React.FC<SearchCardProps> = ({ setDeck }) => {
       return;
     }
 
-    if (deck.some((c) => c.id === card.id)) {
-      console.error("Card is already in the deck.");
-      setToastMessage("Card is already in the deck.");
+    if (deck.filter((c) => c.id === card.id).length >= 4) {
+      setToastMessage("Maximum number of copies reached for this card.");
+      setToastState(ToastState.Warning);
+      setToastVisible(true);
+      return;
+    }
+
+    if (deck.some((c) => c.name === card.name && c.type === card.type)) {
+      setToastMessage(
+        "A card with the same name and type is already in the deck."
+      );
       setToastState(ToastState.Warning);
       setToastVisible(true);
       return;

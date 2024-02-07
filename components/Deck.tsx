@@ -12,7 +12,9 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
       (i, card) => i + parseInt(card.cmc),
       0
     );
-    return nonLandCards.length > 0 ? totalManaCost / nonLandCards.length : 0;
+    const averageManaCost =
+      nonLandCards.length > 0 ? totalManaCost / nonLandCards.length : 0;
+    return parseFloat(averageManaCost.toFixed(2));
   };
 
   const imageLoader = ({ src }: any) => {
@@ -21,16 +23,25 @@ const Deck: React.FC<DeckProps> = ({ deck }) => {
   };
 
   return (
-    <div className="text-white flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold mb-8">Your Deck ({deck.length})</h1>
-      <p className="text-stone-400 mb-4 text-lg underline">
-        Average Mana Cost: {calculateAverageManaCost()}
-      </p>
-      <div className="grid grid-cols-3 gap-4 max-h-full">
+    <div className="text-white flex flex-col items-center justify-center bg-gray-800">
+      <div className="w-full m-auto flex justify-between items-center h-16 px-4 border-b-2">
+        <div>
+          <h1 className="text-xl font-bold">
+            Your Deck - {deck.length >= 20 ? "Ready!!" : "Not ready"} (
+            {deck.length})
+          </h1>
+        </div>
+        <div>
+          <p className="text-stone-400 text-lg">
+            Average Mana Cost: {calculateAverageManaCost()}
+          </p>
+        </div>
+      </div>
+      <div className="grid grid-cols-3 gap-4 max-h-full mt-4 px-4">
         {deck.map((card) => (
           <div
             key={card.id}
-            className="bg-gray-800 rounded-md mb-4 p-4 flex flex-col justify-between"
+            className="bg-black rounded-md mb-4 p-4 flex flex-col justify-between"
           >
             <div>
               <h2 className="text-xl font-bold mb-2">{card.name}</h2>

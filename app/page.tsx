@@ -19,13 +19,17 @@ export default function Page() {
             them to a deck, and get the average mana cost of the cards that
             aren&apos;t land inside the deck.
           </p>
+          <p className="text-stone-400 mt-5">
+            I didn&apos;t use memory or local storage so if you refresh the page
+            you will loose your deck.
+          </p>
         </div>
         <div className="flex space-x-3">
           <Link
             href="/protected"
             className="text-stone-400 underline hover:text-stone-200 transition-all"
           >
-            Protected Page
+            Build your deck
           </Link>
         </div>
       </div>

@@ -7,7 +7,7 @@ const FullDeck: React.FC = () => {
   const [deck, setDeck] = useState<any[]>([]);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid w-full">
       <SearchCard setDeck={setDeck} />
       <Deck deck={deck} />
     </div>

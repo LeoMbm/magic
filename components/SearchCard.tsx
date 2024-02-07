@@ -108,23 +108,24 @@ const SearchCard: React.FC<SearchCardProps> = ({ setDeck }) => {
               </div>
             </li>
           ) : null}
-          {searchResults.map((card) => (
-            <li
-              key={card.id}
-              className="bg-gray-800 rounded-md mb-4 p-4 flex justify-between items-center"
-            >
-              <div>
-                <h2 className="text-xl font-bold">{card.name}</h2>
-                <p className="text-gray-400">{card.type}</p>
-              </div>
-              <button
-                onClick={() => addToDeck(card)}
-                className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none"
+          {searchResults.length > 0 &&
+            searchResults.map((card) => (
+              <li
+                key={card.id}
+                className="bg-gray-800 rounded-md mb-4 p-4 flex justify-between items-center"
               >
-                Add to Deck
-              </button>
-            </li>
-          ))}
+                <div>
+                  <h2 className="text-xl font-bold">{card.name}</h2>
+                  <p className="text-gray-400">{card.type}</p>
+                </div>
+                <button
+                  onClick={() => addToDeck(card)}
+                  className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none"
+                >
+                  Add to Deck
+                </button>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

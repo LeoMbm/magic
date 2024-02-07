@@ -1,7 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   try {
     const name = new URL(req.url || "").searchParams.get("name") || "";
     const res = await fetch(

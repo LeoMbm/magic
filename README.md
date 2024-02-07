@@ -1,7 +1,5 @@
 # Magic the Gatering
 
-This is a [Next.js](https://nextjs.org/) starter kit that uses [NextAuth.js](https://next-auth.js.org/) for simple email + password login, [Drizzle](https://orm.drizzle.team) as the ORM, and a [Neon Postgres](https://vercel.com/postgres) database to persist the data.
-
 ## Context
 
 [Magic the Gathering](https://en.wikipedia.org/wiki/Magic:TheGathering) has been a card game for about 20 years. The principle is quite simple behind. You have a set of cards that produce mana inside your deck and the other cards of the deck need some mana to be played. The cards that produce mana are called land. The others are spells, rituals, creatures, artifacts, or enchantments.

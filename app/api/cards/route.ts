@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/app/auth";
+import axios from "axios";
+export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
   try {
@@ -10,13 +12,13 @@ export async function GET(req: NextRequest) {
       });
     }
     const name = new URL(req.url || "").searchParams.get("name") || "";
-    const res = await fetch(
+    const res = await axios.get(
       `https://api.magicthegathering.io/v1/cards?name=${name}`,
       {
         method: "GET",
       }
     );
-    const card = await res.json();
+    const card = await res.data;
     return new Response(JSON.stringify(card.cards), {
       status: 200,
     });
